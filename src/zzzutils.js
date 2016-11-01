@@ -315,6 +315,24 @@ ZZZUtils.exec = function(command, args, callbacks, doTrace) {
 	});
 };
 
+ZZZUtils.routes = function(app, obj, rep) {
+	if(!app) throw new Error("Missing 'app' param!");
+	if(!obj) throw new Error("Missing 'obj' param!");
+	if(!rep) rep = {};
+
+	__.keys(obj).forEach( key => {
+		app.get('/'+key, (req, res) => {
+			var result, func = obj[key];
+			if(func.length==2) return func(req, res);
+			if(func.length==1) result = func(req);
+			else result = func();
+
+			result = ZZZUtils.replaceBrackets(result, rep);
+			res.send( result );
+		});
+	});
+};
+
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////

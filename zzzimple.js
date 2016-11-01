@@ -1,11 +1,8 @@
+const ZZZUtils = global.ZZZUtils = require("./src/zzzutils");
 const Signal = require('signals').Signal;
-const ZZZUtils = require("./zzzutils");
-const path = ZZZUtils.path;
-const async = ZZZUtils.async;
-const PATHS = {};
 //const jsonSettingsFile = PATHS.temp + '/zzz.json'; // <--- this is now: PATHS.settings
 
-var _this, PLUGINS, WHEN;
+var _this, PLUGINS, WHEN, PATHS = {};
 
 traceClear();
 global.ZZZ = null;
@@ -23,9 +20,7 @@ function ZZZimple() {
 	PATHS.settings = PATHS.temp + "/zzz.json";
 	PATHS.ws = '/socket';
 	
-	var jsonConfig = ZZZUtils.jsonTry(PATHS.settings, {
-		port: 3333
-	});
+	var jsonConfig = ZZZUtils.jsonTry(PATHS.settings, {port: 3333});
 	
 	this.config = __.merge({paths: PATHS}, jsonConfig);
 	
@@ -89,10 +84,16 @@ p.init = function() {
 	WHEN.inited.dispatch();
 };
 
-
 p.start = function() {
 	this.callPlugins('start');
 };
 
 
-module.exports = ZZZimple; 
+module.exports = ZZZimple;
+
+//const ZZZimple = require('./src/zzzimple');
+const zzz = new ZZZimple();
+
+zzz.start();
+
+module.exports = zzz;

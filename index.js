@@ -19,9 +19,4 @@
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const ZZZimple = require('./src/zzzimple');
-const zzz = new ZZZimple();
-
-zzz.start();
-
-module.exports = zzz;
+require('./zzzimple');

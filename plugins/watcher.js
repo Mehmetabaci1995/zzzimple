@@ -5,7 +5,6 @@ module.exports = {
 	init() {
 		//trace("Watcher init.");
 
-		
 	},
 
 	inited() {

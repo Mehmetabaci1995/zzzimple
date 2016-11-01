@@ -1,6 +1,10 @@
 * {
   font-size: 10px;
 }
+body,
+html {
+  position: relative;
+}
 h1,
 h2,
 h3 {
@@ -20,15 +24,36 @@ h2 {
 h3 {
   font-size: 12px;
 }
+i {
+  font-style: italic;
+}
 #container {
   margin: 5px;
 }
 #titlebar {
+  position: absolute;
   padding: 20px 10px 20px 10px;
   background: #ddd;
+  left: 5px;
+  right: 5px;
+  height: 50px;
 }
-#titlebar h1 span {
+#titlebar #title {
+  position: absolute;
+  left: 0px;
+  width: 90px;
+  border: solid 1px #0f0;
+}
+#titlebar #title span {
   color: #00f;
+}
+#titlebar #toolbar {
+  position: absolute;
+  left: 100px;
+  right: 5px;
+  width: auto;
+  height: 30px;
+  border: solid 1px #0f0;
 }
 #myCanvas {
   background: #f00;
